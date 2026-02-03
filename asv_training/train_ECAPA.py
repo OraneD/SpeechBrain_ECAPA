@@ -107,7 +107,7 @@ def train_asv_speaker_embeddings(config_file, hparams_file, run_opts):
     overrides = _convert_to_yaml(hparams_file)
 
     with open(config_file) as f:
-        hparams = load_hyperpyyaml(f, overrides)
+        hparams = load_hyperpyyaml(f,overrides)
 
     run_on_main(
         prepare_libri,

@@ -45,6 +45,7 @@ modules:
     mean_var_norm: !ref <mean_var_norm>
     classifier: !ref <classifier>
 
+pretrained_path: null
 
 pretrainer: !new:speechbrain.utils.parameter_transfer.Pretrainer
     loadables:

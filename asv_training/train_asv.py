@@ -1,7 +1,7 @@
 from copy import deepcopy
 import torch
 
-from .asv_train.train_speaker_embeddings import train_asv_speaker_embeddings
+from .train_ECAPA import train_asv_speaker_embeddings
 
 # For more information, see parse_arguments() in
 # https://github.com/speechbrain/blob/develop/ speechbrain/speechbrain/core.py
@@ -18,8 +18,7 @@ run_opts = {
     'tqdm_colored_bar': False
 }
 
-from utils import setup_logger
-logger = setup_logger(__name__)
+
 
 
 def train_asv_eval(train_params, output_dir):
@@ -31,7 +30,7 @@ def train_asv_eval(train_params, output_dir):
 
 
 def asv_train_speechbrain(train_params, output_dir):
-    logger.info(f'Train ASV model: {output_dir}')
+    print(f'Train ASV model: {output_dir}')
     hparams = {
         'pretrained_path': str(train_params['pretrained_model']),
         'batch_size': train_params['batch_size'],
