@@ -20,7 +20,7 @@ asv:
     finetuning: false # true (ft) or false (scratch)
     pretrained_model: null # path to pretrained model, only used for finetuning
     lr: 0.01
-    epochs: 10
+    epochs: 100
     batch_size: 256 
     num_workers: 10 #increse this can speed up the training process
     num_utt: ALL  # ALL or specific number, number of utterances per speaker
