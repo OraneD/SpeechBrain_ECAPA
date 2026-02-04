@@ -54,3 +54,15 @@ if __name__ == '__main__':
         print("ASV training time: %f min ---" % (float(time.time() - start_time) / 60))
         #model_dir = scan_checkpoint(model_dir, 'CKPT')
         shutil.copy(asv_train_params['train_config'], model_dir)
+
+# python run_run_training.py \
+#   --config exp_config.yaml \
+#   --gpu_ids 0,1,2,3 \
+#   --overwrite "{
+#     \"anon_data_suffix\": \"_anon_B5\",
+#     \"asv\": {
+#       \"training\": {
+#         \"retrain\": false
+#       }
+#     }
+#   }"
