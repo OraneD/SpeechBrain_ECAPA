@@ -19,10 +19,10 @@ asv:
     infer_config: asv_training/hparam/hyperparams.yaml
     finetuning: false # true (ft) or false (scratch)
     pretrained_model: null # path to pretrained model, only used for finetuning
-    lr: 0.01
+    lr: 0.001
     epochs: 100
     batch_size: 256 
-    num_workers: 10 #increse this can speed up the training process
+    num_workers: 30 #increse this can speed up the training process
     num_utt: ALL  # ALL or specific number, number of utterances per speaker
     utt_selection: spk-diverse-sess  # select utterances per speaker and session (spk-sess), per speaker and randomly across all sessions (spk-random), per speaker and balanced across sessions (spk-diverse-sess)
     num_spk: ALL  # ALL or specific number, number of speakers
