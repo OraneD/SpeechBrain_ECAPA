@@ -10,3 +10,6 @@ __pycache__/
 exp
 *.err
 *.out
+*.pkl
+*try*
+*core*
