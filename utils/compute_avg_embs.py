@@ -5,21 +5,30 @@ import pickle as pkl
 
 def get_avg_embs(utt_embs):
     spk2_utt_dic = {}
-    for utt, emb in tqdm(utt_embs.items()) : 
+
+    for utt, emb in utt_embs.items():
         spk_id = utt.split("-")[0]
-        if spk_id not in spk2_utt_dic : 
-            spk2_utt_dic[spk_id] = []
-        spk2_utt_dic[spk_id].append(emb)
-    
+        spk2_utt_dic.setdefault(spk_id, []).append(emb)
+
     spk2embs_avg = {}
-    for spk, embs in tqdm(spk2_utt_dic.items()) :
-        spk2embs_avg[spk] = np.mean(embs, axis=0)
+
+    for spk, embs in spk2_utt_dic.items():
+        avg = np.mean(embs, axis=0)
+
+        norm = np.linalg.norm(avg)
+        if norm > 0:
+            avg = avg / norm
+
+        spk2embs_avg[spk] = avg
+
     return spk2embs_avg
 
+
 def main() :
-    with open("../speaker_embeddings/libri_test_enrolls_B5_ECAPA_speechbrain.pkl", "rb") as f :
+    with open("../speaker_embeddings/libri_test_enrolls_B5.pkl", "rb") as f :
         test_embs = pkl.load(f)
-    print(get_avg_embs(test_embs))
+    spk2embs = get_avg_embs(test_embs)
+    print(spk2embs.keys())
 
 
 if __name__ == "__main__" :
