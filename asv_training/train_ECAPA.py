@@ -28,7 +28,16 @@ class SpeakerBrain(sb.core.Brain):
 
         # Embeddings + speaker classifier
         embeddings = self.modules.embedding_model(feats)
+        if not hasattr(self, '_grad_check'):
+            print(f"Embedding params requires_grad: {next(self.modules.embedding_model.parameters()).requires_grad}")
+            self._grad_check = True
         outputs = self.modules.classifier(embeddings)
+
+        # print("Batch IDs:", batch.id[:10])
+        # print("Speaker labels:", batch.spk_id_encoded[0][:10])
+        # print("Output shape:", outputs.shape)
+        # print("Embedding shape:", embeddings.shape)
+        # self._debug_printed = True  # only print once
 
         return outputs, lens
 
