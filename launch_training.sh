@@ -26,10 +26,5 @@ python run_training.py \
 --config exp_config.yaml \
 --gpu_ids 0,1,2,3 \
 --overwrite "{
-\"anon_data_suffix\": \"${ANON_SUFFIX}\",
-\"asv\": {
-\"training\": {
- \"retrain\": false
-        }
-    }
+\"anon_data_suffix\": \"${ANON_SUFFIX}\"
 }"
